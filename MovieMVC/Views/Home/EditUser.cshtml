@@ -1,0 +1,73 @@
+﻿@model MovieMVC.Models.UserModelUnique
+
+@{
+    ViewBag.Title = "EditUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EditUser</h2>
+<div class="form-horizontal">
+    @Html.HiddenFor(model => model.id, new { id="hiddenID"})
+    <table class="table">
+        <thead>
+            <tr>
+                <th>                   
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Surname)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", id = "tbName" })
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Surname, new { @class = "form-control", id = "tbSurname" })
+            </td>
+        </tr>
+
+    </table>
+    <input  id="submit" value="send change" class="btn btn-default" />
+</div>
+<script type="text/javascript">
+
+    $('#submit').click(function () {
+
+        var userData = {
+
+            Name: $("#tbName").val(),
+            Surname: $("#tbSurname").val(),
+            id: $("#hiddenID").val()
+        };
+        
+
+        $.ajax({
+            url: '/Home/ModifyUser',
+            dataType: "json",
+            type: "POST",
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(userData),
+            //async: true,
+            //processData: false,
+            //cache: false,
+
+
+            success: function (data) {
+                location.href = '/Home/getUsers'
+                //alert(data.Name + "  " + data.Surname);
+            },
+
+
+            error: function (xhr, status, error) {
+                //alert(xhr.responseText);
+                alert("error");
+            }
+
+        });
+    });
+    
+
+</script>

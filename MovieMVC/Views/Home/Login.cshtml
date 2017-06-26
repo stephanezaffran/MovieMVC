@@ -1,0 +1,33 @@
+﻿@model   MovieMVC.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/simpleLayout.cshtml";
+}
+
+@using (Html.BeginForm("Login", "Home"))
+{
+
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="form-group">
+            <div class="controls">
+                <p>Login</p>
+                @Html.TextBoxFor(u => u.Login, new { @class = "form-control" })
+
+                <br /><br />
+
+                <p>Password</p>
+                @Html.TextBoxFor(u => u.Password, new { @class = "form-control" })
+            </div>
+            <br /><br />
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <input type="submit" class="btn btn-primary" value="Rechercher" />
+            </div>
+        </div>
+
+    </div>
+}
