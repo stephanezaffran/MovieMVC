@@ -1,0 +1,106 @@
+﻿@model   MovieMVC.Models.AddUsernModel
+
+
+@{
+    ViewBag.Title = "test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br /><br />
+
+@using (Html.BeginForm("Form", "Form"))
+{
+
+    <div class="row">
+        <div class="control-group">
+            <div class="controls">
+                <p>enter new student name</p>
+                <input type="text" id="tbName" />
+                <br /><br />
+
+                <p>enter new student surname</p>
+                <input type="text" id="tbSurname" />
+                <br /><br /><br />
+
+                <p>enter new student Login</p>
+                <input type="text" id="tbLogin" />
+                <br /><br /><br />
+
+                <p>enter new student password</p>
+                <input type="text" id="tbPassword" />
+                <br /><br /><br />
+            </div>
+        </div>
+
+        <div class="control">
+            <input id="submitId" value="Create" class="btn btn-primary" width="20" />
+        </div>
+    </div>
+
+
+
+    @*<p>enter new student name</p>
+        <input type="text" id="tbName" />
+
+        <p>enter new student surname</p>
+        <input type="text" id="tbSurname" />
+
+        <input id="submitId" value="Create" class="btn btn-default" />*@
+}
+
+
+
+<script type="text/javascript">
+
+
+
+    $('#submitId').click(function () {
+
+       // alert("enter to function");
+        var userData = {
+
+            Name: $("#tbName").val(),
+            Surname: $("#tbSurname").val(),
+            Login: $("#tbName").val(),
+            Password: $("#tbSurname").val()
+        };
+
+        alert(userData.Name + "  " + userData.Surname);
+
+        $.ajax({
+            url: '/Home/adduserpost',
+            dataType: "json",
+            type: "POST",
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(userData),
+            //async: true,
+            //processData: false,
+            //cache: false,
+
+
+            success: function (data) {
+                location.href = '/Home/getUsers'
+               // alert(data.Name + "  " + data.Surname);
+            },
+
+
+            error: function (xhr, status, error) {
+                //alert(xhr.responseText);
+                alert("error");
+            }
+
+        });
+    });
+
+
+
+
+
+
+    //var userData = {
+    //    Name: document.getElementById('userModelName').value(),
+    //    Surname: document.getElementById('userModelSurname').value()
+    //};
+
+
+</script>

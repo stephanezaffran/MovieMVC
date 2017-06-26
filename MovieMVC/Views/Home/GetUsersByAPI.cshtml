@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "GetUsersByAPI";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetUsersByAPI</h2>
+
+
+<header>
+    <div class="content-wrapper">
+        <div class="float-left">
+            <p class="site-title">
+                <a href="~/">ASP.NET Web API</a>
+            </p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            alert("enter in the function");
+            // Envoi de la requête Ajax
+            $.getJSON("http://localhost:57086/api/User", function (data) {
+
+                alert(data.getJSON);
+
+                // En cas de succès, 'data' contient la liste des clients.
+                $.each(data, function (key, val) {
+
+                    var str = val.UserID + ' ' + val.Name + ' ' + val.Surname;
+
+                    $('<li/>', { html: str }).appendTo($('#customers'));
+                });
+            });
+        });
+
+
+        //$(document).ready(function () {
+           
+            
+           
+        //    $.ajax({
+        //        url: "http:// localhost:57086/api/User",
+        //        type: 'GET',
+        //        dataType: 'json',
+        //        async: false,
+        //        success: function (data, textStatus, xhr) {
+        //            alert(data);
+        //        },
+
+        //        error: function (xhr, err) {
+        //            alert("ERROR " + xhr.responseText);
+        //        }
+
+        //    })
+        //});
+
+
+
+
+
+    </script>
+</header>
+<div id="body">
+    <h1>Customers</h1>
+    <ul id='customers' />
+</div>
