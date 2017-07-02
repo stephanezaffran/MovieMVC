@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "getFile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>getFile</h2>
+
+@using (Html.BeginForm("Form", "Form"))
+{
+
+    <a href="GetFileHandler.ashx?file=aaaa.pdf">click here to download</a>
+
+}

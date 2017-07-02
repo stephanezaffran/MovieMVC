@@ -112,7 +112,13 @@ namespace MovieMVC.Controllers
         public ActionResult GetUsersByAPI()
         {
             return View();
-        }        
+        }
+        public ActionResult getFile()
+        {
+            return View();
+        }
+
+
     }
 }
 

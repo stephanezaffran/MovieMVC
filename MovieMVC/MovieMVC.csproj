@@ -154,6 +154,9 @@
     </Compile>
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GetFileHandler.ashx.cs">
+      <DependentUpon>GetFileHandler.ashx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -202,6 +205,8 @@
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Home\EditUser.cshtml" />
     <Content Include="Views\Home\GetUsersByAPI.cshtml" />
+    <Content Include="GetFileHandler.ashx" />
+    <Content Include="Views\Home\getFile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

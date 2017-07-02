@@ -15,8 +15,34 @@
             <div class="controls">
                 <ul class="" id='customers' />
             </div>
+        </div>
+        <div class="control-group">
             <div class="controls">
                 <select name="dropdown" id="MySelect" style="width: 80px"></select>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <table class="table" id="tableUser">
+                    <thead>
+                        <tr>
+                            <th>
+                                id
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Surname
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        </tr>
+                    </tbody>
+
+                </table>
             </div>
         </div>
 
@@ -30,23 +56,29 @@
 
 
         // Envoi de la requête Ajax
-        $.getJSON("http://localhost:57086/api/User", function (data) {
+        $.getJSON("http://localhost:57086/api/User/json ", function (data) {
+
 
             //alert(data.getJSON);
-            $('#MySelect').empty();
+           // $('#MySelect').empty();
+            //$('#tableUser').empty();
 
             // En cas de succès, 'data' contient la liste des clients.
             $.each(data, function (key, val) {
 
                 var str = val.UserID + ' ' + val.Name + ' ' + val.Surname;
-
                 $('<li/>', { html: str }).appendTo($('#customers'));
 
-                
-                
+
+
                 $('#MySelect').append($('<option>').text(val.Name).attr('value', val.UserID));
                 //$select.append('<option value=' + key + '>' + value + '</option>');
-               // $('#MySelect').append($('<option />').val("4").text("/"));
+                // $('#MySelect').append($('<option />').val("4").text("/"));
+
+
+
+                $('<tbody>').append('<tr><td>' + val.UserID + '</td><td>' + val.Name + '</td> <td>' + val.Surname + '</td></tr>').appendTo($('#tableUser'));
+
 
             });
 
