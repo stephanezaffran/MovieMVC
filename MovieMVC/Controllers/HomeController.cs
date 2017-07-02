@@ -111,7 +111,6 @@ namespace MovieMVC.Controllers
         }
         public ActionResult GetUsersByAPI()
         {
-
             return View();
         }        
     }
