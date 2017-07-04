@@ -111,7 +111,11 @@ namespace MovieMVC.Controllers
         }
         public ActionResult GetUsersByAPI()
         {
-            return View();
+            UserModel model = new UserModel();
+            //model.users = UserBL.getUsers();
+
+            //return View(model);
+            return View(model);
         }
         public ActionResult getFile()
         {

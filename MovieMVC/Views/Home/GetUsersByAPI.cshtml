@@ -1,4 +1,4 @@
-﻿
+﻿@model   MovieMVC.Models.UserModel
 @{
     ViewBag.Title = "GetUsersByAPI";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,6 +12,10 @@
 {
     <div class="row">
         <div class="control-group">
+            <div class="controls">
+
+                @Html.DropDownListFor(m => m.users, new SelectList(Model.users, "UserID", "Name"),new { id = "IdList" } );
+            </div>
             <div class="controls">
                 <ul class="" id='customers' />
             </div>
@@ -38,8 +42,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        </tr>
+                        <tr></tr>
                     </tbody>
 
                 </table>
@@ -60,8 +63,11 @@
 
 
             //alert(data.getJSON);
-           // $('#MySelect').empty();
+            // $('#MySelect').empty();
             //$('#tableUser').empty();
+
+            var selectedDeviceModel = $('#IdList');
+            selectedDeviceModel.empty();
 
             // En cas de succès, 'data' contient la liste des clients.
             $.each(data, function (key, val) {
@@ -78,6 +84,15 @@
 
 
                 $('<tbody>').append('<tr><td>' + val.UserID + '</td><td>' + val.Name + '</td> <td>' + val.Surname + '</td></tr>').appendTo($('#tableUser'));
+
+
+
+                selectedDeviceModel.append(
+                    $('<option/>', {
+                        value: val.UserID,
+                        text: val.Name + "  " + val.Surname
+                    })
+                );
 
 
             });
